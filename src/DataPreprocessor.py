@@ -27,7 +27,7 @@ class DataPreprocessor:
         """
 
     def __init__(self):
-        self.dataFinder = DataFinder();
+        self.dataFinder = DataFinder()
         self.mongo_conn = MongoConnector()
 
         self.mongo_conn.start_connection()
@@ -216,7 +216,7 @@ class DataPreprocessor:
             # Iterate through each document in the result
             for document in tqdm(result, desc="Processing", unit="field"):
                 # Get the value of the field "Kilometre" from the current document
-                km_value = document.get("Kilometre")
+                km_value = document.get("Fiyat")
 
                 # Check if the km_value is not None
                 if km_value is not None:
@@ -233,7 +233,7 @@ class DataPreprocessor:
                             km_value_as_int = int(km_value_sp)
 
                             # Update the MongoDB collection with the new integer value
-                            self.mongo_conn.update_documents_by_model(model="Kilometre", model_value=km_value,
+                            self.mongo_conn.update_documents_by_model(model="Fiyat", model_value=km_value,
                                                                       new_field_value=km_value_as_int)
 
                         except ValueError as e:

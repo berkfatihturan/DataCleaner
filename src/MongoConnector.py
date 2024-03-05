@@ -154,6 +154,6 @@ class MongoConnector:
         """
 
         # Fetching the 'Kilometre' fields of all documents
-        result = self.collection.find({}, {"_id": 0, "Kilometre": 1})
+        result = self.collection.find({}, {"_id": 0, "Fiyat": 1})
 
         return result
